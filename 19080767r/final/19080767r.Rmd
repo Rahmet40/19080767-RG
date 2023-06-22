@@ -1,0 +1,173 @@
+---
+title: "The Impact of Marital Status on Crime and what affects their brain"
+author:
+  - Güneş, Rahmetullah[^1]
+bibliography: ../bibliography/biblio.bib
+csl: ../csl/apa.csl
+header-includes:
+  - \usepackage{polyglossia}
+  - \setmainlanguage{english}
+  - \usepackage{booktabs}
+  - \usepackage{caption}
+  - \captionsetup[table]{skip=10pt}
+output:
+  bookdown::pdf_document2:
+    fig_caption: yes
+    fig_height: 3
+    fig_width: 4
+    keep_tex: no
+    latex_engine: xelatex
+    number_sections: yes
+    toc: no
+geometry: margin=1in
+link-citations: yes
+urlcolor: blue
+fontsize: 12pt
+biblio-style: apalike
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<!-- ======================================================================= -->
+<!-- ============================== FOOTNOTES ============================== -->
+<!-- ======================================================================= -->
+[^1]: 19080767, [Github Repo](https://github.com/Rahmet40/19080767)
+
+
+# Introduction
+In today's world, where living conditions and technological developments change human relations and increase isolation, individuals can easily resort to harmful orientations that threaten their health and productivity. My data sources and purpose are about the type of crime and their marital status and I want to search what affects their brain and lives when they get involved in crime and their sex ratios. Before the start literature review, I want to explain some definition that helps to understand the main idea. Offence: It is an act which violates and endangers the existence of a society, or life conditions, or the main benefits of individuals or a society and is found to be damaging or dangerous by lawmakers and therefore, sanctions like penalty or security measures are applied against it. In Turkish Criminal Law No. 5237, sanctions  are defined as penalties and security measures.If convicts received into or discharged from prison committed more than one crime,  one of the crimes resulted in major punishment is taken as type of crime. Drug addiction; It can be defined as inability to discontinue the use of these substances even though a person who can adversely affect one or more functions of the body is harmed. Drug crime is not only a type of crime in itself, but can also form the basis of many types of crimes (theft, murder, traffic, harassment and rape). We have to touch another points which are marital status and their gender role to each other. The main difference between men and women is not a sex-based segregation, but a sex-based segregation resulting from a different socialization process. That is, sex biological sex is cultural. Thus, we can understand gender role and maritul status.
+
+
+
+## Literature Review
+
+The values and material objects that people give to each other in their marriage can encourage crime after or during divorce. This situation affects different to the young generation and old generation. Several hypotheses are consistent with these results. First, spouses of older ex-prisoners may feel more invested in their incarcerated husband than those of younger ex-prisoners or may have fewer alternatives. Consequently, such spouses may have greater incentive to invest in their husband’s pro-social return from prison. Second, younger ex-prisoners are more likely to have younger spouses, who by virtue of their age are also more likely to engage in criminal activity. Thus, it is less likely that young spouses will have a prosocial influence on the returning prisoner. Finally, there is a possibility that younger respondents have a more fluid definition of a “like-married relationship” than older respondents and potentially, these relationship bonds are not as strong. [@visher:2009]
+
+In-prison programs that improve married relationships may benefit older ex-offenders' recidivism and substance use outcomes, whereas casual or unmarried relationships have little effect.Marriage’s effect on drug use was strongest for older ex-offenders (those over age 26), suggesting that committed relationships are more beneficial for those already in the process of aging out of crime. Moreover, higher quality partnerships were associated with lower odds of drug use. Former prisoners in casual, unmarried relationships experienced outcomes similar to those with no intimate partner. Overall, the findings suggest that in-prison programs that strengthen the quality of married relationships may improve recidivism and substance use outcomes after release. [@içli:1988]
+Drug addiction can have devastating consequences not only for the individual but also for society, as it can lead to a range of criminal behaviors and harms to oneself and others. Due to wrong decisions when people are under the influence of substance use; Behavioral disorders, provocation and aggression, and fraud, drug addicts can be involved in crimes such as armed and unarmed attacks, blackmail and threats, and murder in order to obtain the substance they use, can cause traffic accidents, sexual abuse can cause work accidents that can harm oneself and others. They may also commit crimes such as substance abuse during their imprisonment.[@altuner:2009]
+
+Marital status can be an effective factor on crime types. It has been observed that married individuals tend to commit crimes less than singles. However, separated or divorced individuals may be more likely to commit crimes. The effect of marital status on crime types may be more pronounced in certain crime categories such as sexual crimes. Those involved in crimes in this category are generally single or separated. However, there may not always be such a correlation, and each type of crime may be affected differently by marital status. For this reason, more than one factor should be taken into account in order to understand the causes of crime and to determine strategies to fight crime. This article was giving statistical data and consequences. According to the results of this research and writers,  have achieved these results:
+In crimes against the person, the number of people involved in the crime is higher, Those who are not related to the workplace commit more crimes against the person,
+The defendants whose father passed away committed more crimes,
+More crimes are committed against property for economic reasons,
+Crimes against public security are mostly committed for psychological reasons, Those who have committed the same crime before, continue to commit the same crime, Crimes against property are more common at young ages,
+It has been determined that more crimes against individuals are committed during the day. [@aytac:2007]
+
+# Data
+The data you have provided appears to be from the Turkish Statistical Institute (TurkStat) and represents Type of Crime in Turkey for the years 2019-2021. The table consists of several variables and their respective values for each year. Let's break down the variables and their meanings:
+
+**Years:** This variable represents the years for which data is provided 2019, 2020 and 2021.
+
+**Type of Crime:** 
+Crimes are generally graded into four categories: felonies, misdemeanors, felony-misdemeanors, and infractions. 
+**Homicide:** The killing of one person by another
+
+**Robbery:** the crime of stealing from somewhere or someone.
+
+**Sexual Crimes:** Migration for educational purposes.
+
+**Kidnapping:** In criminal law, kidnapping is the unlawful abduction, asportation and confinement of a person against their will.
+
+**Other:** Other reasons not specified.
+
+**Unknown:** Cases where the type of crimes are unknown.
+
+**Total:** This variable represents the total number of people who makes crime internally for each specific year and reason.
+
+The following variables represent the distribution of crime according to their educational attainment:
+
+***Illiterate:*** People who cannot read and write.
+People who can read and write but have not completed school: Individuals who have basic literacy skills but have not completed primary school.
+
+***Primary school:*** individuals who have completed primary school.
+
+***Primary secondary school or equivalent education:*** Individuals with primary or secondary school education or equivalent.
+
+***Higher education:*** Individuals with higher education.
+
+***Unknown:*** Cases where the educational attainment of crime is unknown.
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(here)
+library(readxl)
+library(knitr)
+survey <- read_excel(here("data/survey.xlsx"))
+```
+
+```{r, echo=FALSE}
+library(xtable) 
+library(summarytools)
+st_options(lang = "en")
+```
+
+```{r results='asis', echo=FALSE}
+survey %>%
+  select("Illiterate\r\n", "Who can read and write but the school completed", "Elementary school\r\n", 
+         "Primary secondary school or equivalent education\r\n", "Primary secondary school or equiva\r\n",
+         "Higher education\r\n", "Unknown\r\n") %>%
+  mutate(across(everything(), as.numeric)) %>%
+  descr(stats = c("mean", "sd", "min", "max"), transpose = TRUE) %>%
+  data.frame() %>%
+  kable(caption = "Summary Statistics", format = "markdown", align = c("l", "c", "c", "c", "c", "c", "c"))
+```
+
+
+# Methods and Data Analysis
+In this section describe the methods that you use to achieve the purpose of the study. You should use the appropriate analysis methods (such as hypothesis tests and correlation analysis) that we covered in the class. If you want, you can also use other methods that we haven't covered. If you think some method is more suitable for the purpose of the analysis and the data set, you can use that method [@newbold:2003; @verzani:2014; @wickham:2014; @wooldridge:2015a].
+
+For example, if you are performing regression analysis, discuss your predicted equation in this section. Write your equations and mathematical expressions using $LaTeX$.
+
+$$
+Y_t = \beta_0 + \beta_N N_t + \beta_P P_t + \beta_I I_t + \varepsilon_t
+$$
+
+This section should also include different tables and plots. You can add histograms, scatter plots (such as Figure \@ref(fig:plot)), box plots, etc. Make the necessary references to your figures as shown in the previous sentence.
+
+
+```{r results='asis', echo=FALSE, fig.width=14, fig.height=10}
+library(GGally)
+library(ggplot2)
+ggpairs(data = survey, columns = 4:9, cardinality_threshold = 40)
+```
+```{r, echo=FALSE, fig.width=3, fig.height=2}
+library(GGally)
+library(ggplot2)
+
+ggpairs(data = survey, columns = 4:9, cardinality_threshold = 40)
+
+library(tidyr)
+
+reasons <- c("Homicide", "Assault", "Sexual crimes", 
+             "Kidnapping", "Defamation",
+             "Theft", "Robbery", "Swindling", "Forgery", "Bribery", "Other", "Unknown")
+
+df <- data.frame(
+  Reason = rep(reasons, each = 3),
+  Year = rep(c(2019, 2020, 2021), length(reasons)),
+  Value = c(49028, 49653, 48061, 55750, 52067, 50194, 51917, 51548, 47182, 45807, 58245, 45198, 62010, 37753, 45161, 56730, 47415, 39194, 42835, 49168, 34177, 40727, 54004, 37788, 47027, 43755, 36061, 54250, 40257, 36194, 38155, 40610, 40468, 52405, 33198, 30298)
+)
+
+df_long <- tidyr::gather(df, key = "Year", value = "Value", -Reason)
+
+ggplot(df_long, aes(x = Year, y = Value, fill = Reason)) +
+  geom_area() +
+  labs(x = "Year", y = "Value", title = "Type of Crime") +
+  scale_fill_brewer(palette = "Set3") +
+  theme_minimal()
+```
+
+
+
+# Conclusion
+Summarize the results of your analysis in this section. Discuss to what extent your results responded to the research question you identified at the beginning and how this work could be improved in the future.
+
+**References section is created automatically by Rmarkdown. There is no need to change the references section in the draft file.**
+
+**_You shouldn't delete the last 3 lines. Those lines are required for References section._**
+
+\newpage
+# References {#references}
+<div id="refs"></div>
+
